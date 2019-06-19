@@ -8,21 +8,16 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.UUID;
 
 @RequestMapping("api/v1/car")
 @RestController
 public class CarController {
 
-    private final CarService carService;
-
     @Autowired
-    public CarController(CarService carService) {
-        this.carService = carService;
-    }
+    private CarService carService;
 
     @PostMapping
-    public void addCar(@RequestBody @Valid @NonNull Car car){
+    public void addCar(@RequestBody Car car){
         carService.addCar(car);
     }
 
@@ -32,18 +27,18 @@ public class CarController {
     }
 
     @GetMapping(path = "/{id}")
-    public Car getCarById(@PathVariable("id") UUID id){
+    public Car getCarById(@PathVariable("id") Integer id){
         return carService.getCarById(id)
                 .orElse(null);
     }
 
     @DeleteMapping(path = "/{id}")
-    public void deleteCarById(@PathVariable("id") UUID id){
+    public void deleteCarById(@PathVariable("id") Integer id){
         carService.deleteCarById((id));
     }
 
     @PutMapping(path = "/{id}")
-    public void updateCarById(@PathVariable("id") UUID id, @RequestBody @Valid @NonNull Car car){
+    public void updateCarById(@PathVariable("id") Integer id, @RequestBody @Valid @NonNull Car car){
         carService.updateCarById(id, car);
     }
 }

@@ -1,27 +1,36 @@
 package com.example.spring_tutorial.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.concurrent.ThreadLocalRandom;
 
-import javax.validation.constraints.NotBlank;
-import java.util.UUID;
-
+@Entity
 public class Car {
-    private UUID id;
-    @NotBlank
-    private final String brand;
-    @NotBlank
-    private final String model;
 
-    public Car(@JsonProperty("id") UUID id, @JsonProperty("brand") String brand, @JsonProperty("model") String model) {
-        this.id = id;
+    public Car(){
+
+    }
+
+    public Car(String brand, String model) {
+        this.id = ThreadLocalRandom.current().nextInt();
         this.brand = brand;
         this.model = model;
     }
 
-    public UUID getId() {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
+
+    private String brand;
+
+    private String model;
+
+
+    public Integer getId() {
         return id;
     }
-
 
     public String getBrand() {
         return brand;
@@ -29,6 +38,18 @@ public class Car {
 
     public String getModel() {
         return model;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 }
 
