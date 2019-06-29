@@ -22,9 +22,7 @@ public class Car {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
     private String brand;
-
     private String model;
 
 
