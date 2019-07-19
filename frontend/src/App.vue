@@ -1,38 +1,22 @@
 <template>
-  <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-toolbar>
-
-    <v-content>
-      <MainView/>
-    </v-content>
-  </v-app>
+  <AppFrame></AppFrame>
 </template>
 
 <script>
-import MainView from './components/MainView'
+import AppFrame from './components/AppFrame'
 
 export default {
-  name: 'App',
-  components: {
-    MainView
-  },
-  data () {
+  name: "App",
+  components: {AppFrame,},
+  data() {
     return {
       //
+    };
+  },
+  methods: {
+    goTo(route) {
+      this.$router.push(route);
     }
   }
-}
+};
 </script>
