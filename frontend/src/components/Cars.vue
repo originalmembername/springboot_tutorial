@@ -49,21 +49,21 @@ export default {
         flex: 3
       }
     ],
-    cars: [
-      {
-        id: "1",
-        brand: "Mercedes",
-        model: "SLK",
-        src: "https://www.autoscout24.de/assets/auto/images/model/mercedes-benz/mercedes-benz-slk-200/mercedes-benz-slk-200-l-01.jpg"
-      },
-      {
-        id: "2",
-        brand: "Volkswagen",
-        model: "Golf",
-        src: "https://www.volkswagen.de/content/dam/vw-ngw/international-mastersite/showrooms/golf-2016/content/showroom-stage/GL4709_7-8-front_male-model.jpg/_jcr_content/renditions/original.transform/max/img.jpg",
+    cars: []
+  }),
+  methods: {
+      loadCars() {
+          this.$http
+        .get(`${process.env.API_HOST}/cars`)
+        .then(response => {
+          let { cars } = response.body
+          this.cars = cars;
+        })
       }
-    ]
-  })
+  },
+  beforeMount() {
+      this.loadCars()
+  }
 };
 </script>
 
