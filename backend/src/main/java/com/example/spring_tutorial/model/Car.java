@@ -9,41 +9,47 @@ import java.util.concurrent.ThreadLocalRandom;
 @Entity
 public class Car {
 
-    public Car(){
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String brand;
+    private String model;
+    private String imgUrl;
+    public Car() {
 
     }
-
     public Car(String brand, String model) {
         this.id = ThreadLocalRandom.current().nextInt();
         this.brand = brand;
         this.model = model;
     }
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
-    private String brand;
-    private String model;
+    public String getImgUrl() {
+        return imgUrl;
+    }
 
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public Integer getId() {
         return id;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
     }
 
     public void setModel(String model) {
