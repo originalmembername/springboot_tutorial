@@ -14,6 +14,14 @@
             <v-list-tile-title>Cars</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile @click="$router.push('/newcar')">
+          <v-list-tile-action>
+            <v-icon>fas fa-edit</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>New Car</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
         <v-list-tile @click="$router.push('/about')">
           <v-list-tile-action>
             <v-icon>info</v-icon>
@@ -38,6 +46,8 @@
 </template>
 
 <script>
+import '@fortawesome/fontawesome-free/css/all.css'
+
   export default {
     data: () => ({
       drawer: null
